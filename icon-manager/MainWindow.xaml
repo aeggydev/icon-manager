@@ -3,11 +3,77 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:icon_manager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Button Content="Select Directory"></Button>
-        <Button Content="Start"></Button>
-    </Grid>
+        Title="Icon Changer"
+        Height="390" Width="490"
+        ResizeMode="NoResize" Icon="icon.png">
+    <Border BorderBrush="#CFCFCF" BorderThickness="2">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="4*" />
+            </Grid.ColumnDefinitions>
+            <Border Grid.Column="0" BorderBrush="#AFAFAF" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3*" />
+                        <RowDefinition Height="5*" />
+                        <RowDefinition Height="1*" />
+                    </Grid.RowDefinitions>
+                    <Grid.Style>
+                        <Style>
+                            <Setter Property="Button.FontSize" Value="24" />
+                            <Setter Property="Button.FontFamily" Value="./Fonts/#Eras ITC" />
+                            <Setter Property="Button.FontWeight" Value="Light" />
+                            <Setter Property="Label.FontSize" Value="24" />
+                            <Setter Property="Label.FontFamily" Value="./Fonts/#Eras ITC" />
+                            <Setter Property="Label.FontWeight" Value="Light" />
+                        </Style>
+                    </Grid.Style>
+                    <StackPanel Grid.Row="0">
+                        <Button Content="Select Folder" Click="OnSelectFolder" />
+                        <Button Content="Start Batch" />
+                    </StackPanel>
+                    <StackPanel Grid.Row="1">
+                        <Label Content="Tools" HorizontalContentAlignment="Center" />
+                        <Button Content="Ico Converter" />
+                        <Button Content="Icon Remover" />
+                    </StackPanel>
+                    <Button Grid.Row="2" Content="Settings" DockPanel.Dock="Bottom" Visibility="Hidden" />
+                </Grid>
+            </Border>
+            <Border Grid.Column="1" BorderBrush="#AFAFAF" BorderThickness="1">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <Label Grid.Row="0" Content=" Icon Changer"
+                           FontSize="36" Background="WhiteSmoke" FontFamily="./Fonts/#Eras ITC" FontWeight="Light" />
+                    <ListView Grid.Row="1" Name="PathList" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Margin="0,0,10,0"
+                                            Click="RemovePath"
+                                            BorderThickness="0" Background="Transparent">
+                                        <Image Source="cross.png" Height="11" />
+                                    </Button>
+                                    <TextBlock Text="{Binding Path}" />
+                                    <TextBlock Text="\" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                        <ListView.Style>
+                            <Style>
+                                <Setter Property="TextBlock.FontSize" Value="11" />
+                                <Setter Property="TextBlock.Padding" Value="0" />
+                            </Style>
+                        </ListView.Style>
+                    </ListView>
+                </Grid>
+            </Border>
+        </Grid>
+    </Border>
 </Window>

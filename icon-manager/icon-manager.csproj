@@ -12,4 +12,37 @@
       <PackageReference Include="Magick.NET-Q8-AnyCPU" Version="7.22.2.2" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Remove="ERASLGHT.TTF" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Fonts\ERASLGHT.TTF">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="Fonts\ERASMD.TTF" />
+      <Resource Include="Fonts\ERASMD.TTF" />
+      <None Remove="icon.png" />
+      <Resource Include="icon.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+      <None Remove="cross.png" />
+      <Resource Include="cross.png">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Resource>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Fonts\ERASBD.TTF" />
+      <Resource Include="Fonts\ERASBD.TTF" />
+      <None Remove="Fonts\ERASDEMI.TTF" />
+      <Resource Include="Fonts\ERASDEMI.TTF" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+        <HintPath>..\..\..\..\..\..\Windows\WinSxS\msil_system.windows.forms_b77a5c561934e089_10.0.19041.1_none_f1d47663d48a8243\System.Windows.Forms.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

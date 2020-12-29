@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using ImageMagick;
 using Ini.Net;
 
@@ -98,11 +100,19 @@ namespace icon_manager
             return false;
         }
 
+        public List<Directory> RecurseToList()
+        {
+            var dirs = new List<Directory> {this};
+            dirs.AddRange(System.IO.Directory.GetDirectories(Path, "*.*", SearchOption.AllDirectories)
+                .Select(dirName => FromPath(dirName)));
+
+            return dirs;
+        }
+        
         public void RecursivelySet()
         {
-            foreach (var dirName in System.IO.Directory.GetDirectories(Path, "*.*", SearchOption.AllDirectories))
+            foreach (var dir in RecurseToList())
             {
-                var dir = Directory.FromPath(dirName);
                 dir.SetIconIfHas();
             }
         }
